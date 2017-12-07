@@ -40,6 +40,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBAction func sendButtonTapped(_ sender: Any) {
         let chatMessage = PFObject(className: "Message")
         chatMessage["text"] = messageTextField.text ?? ""
+        chatMessage["user"] = PFUser.current()
         chatMessage.saveInBackground { (success, error) in
             if success {
                 print("The message was saved!")
@@ -57,6 +58,15 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ChatCell", for: indexPath) as! ChatCell
         cell.messageLabel.text = messages[indexPath.row]["text"] as? String
+        
+        if let user = messages[indexPath.row]["user"] as? PFUser {
+            // User found! update username label with username
+            cell.userLabel.text = user.username
+        } else {
+            // No user found, set default username
+            cell.userLabel.text = "🤖"
+        }
+        
         return cell
     }
     

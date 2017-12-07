@@ -119,33 +119,47 @@
                                     <action selector="sendButtonTapped:" destination="X2c-vb-GZ3" eventType="touchUpInside" id="xcY-wt-urY"/>
                                 </connections>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ro1-jx-ROg">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="79" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ro1-jx-ROg">
                                 <rect key="frame" x="0.0" y="110" width="375" height="557"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ChatCell" id="i3H-Wt-JoX" customClass="ChatCell" customModule="ParseChatDemo" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ChatCell" rowHeight="79" id="i3H-Wt-JoX" customClass="ChatCell" customModule="ParseChatDemo" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="79"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="i3H-Wt-JoX" id="Jdo-uS-GAA">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="78.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My message..." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O1b-sv-Gbd">
-                                                    <rect key="frame" x="8" y="12" width="359" height="23.5"/>
+                                                    <rect key="frame" x="8" y="25" width="359" height="45.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3GJ-AK-f3S">
+                                                    <rect key="frame" x="8" y="4" width="359" height="17"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="17" id="ZUs-kv-6iD"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" red="0.60000002379999995" green="0.60000002379999995" blue="0.60000002379999995" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="O1b-sv-Gbd" firstAttribute="top" secondItem="Jdo-uS-GAA" secondAttribute="topMargin" constant="4" id="GQP-uZ-X8B"/>
-                                                <constraint firstItem="O1b-sv-Gbd" firstAttribute="trailing" secondItem="Jdo-uS-GAA" secondAttribute="trailingMargin" id="Hx4-MI-HXs"/>
+                                                <constraint firstItem="O1b-sv-Gbd" firstAttribute="leading" secondItem="3GJ-AK-f3S" secondAttribute="leading" id="8Oq-ba-ybi"/>
+                                                <constraint firstItem="3GJ-AK-f3S" firstAttribute="leading" secondItem="Jdo-uS-GAA" secondAttribute="leading" constant="8" id="9ks-Hj-ZyD"/>
+                                                <constraint firstItem="3GJ-AK-f3S" firstAttribute="top" secondItem="Jdo-uS-GAA" secondAttribute="topMargin" constant="-4" id="BPd-Nn-DSv"/>
+                                                <constraint firstItem="O1b-sv-Gbd" firstAttribute="trailing" secondItem="3GJ-AK-f3S" secondAttribute="trailing" id="HCJ-Kb-Kbe"/>
                                                 <constraint firstItem="O1b-sv-Gbd" firstAttribute="leading" secondItem="Jdo-uS-GAA" secondAttribute="leadingMargin" id="JOy-re-ABG"/>
+                                                <constraint firstAttribute="trailing" secondItem="3GJ-AK-f3S" secondAttribute="trailing" constant="8" id="ec4-j4-fwQ"/>
                                                 <constraint firstAttribute="bottom" secondItem="O1b-sv-Gbd" secondAttribute="bottom" constant="8" id="sQu-yc-tn0"/>
+                                                <constraint firstItem="O1b-sv-Gbd" firstAttribute="top" secondItem="3GJ-AK-f3S" secondAttribute="bottom" constant="4" id="uwW-7m-AL3"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="messageLabel" destination="O1b-sv-Gbd" id="PIy-2A-BA9"/>
+                                            <outlet property="userLabel" destination="3GJ-AK-f3S" id="Ofq-N9-9lx"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
