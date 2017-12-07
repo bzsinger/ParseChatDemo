@@ -2,7 +2,7 @@
 
 ParseChatDemo is a chat client that uses [Parse](http://parseplatform.org/)
 
-Time spent: 0.25 hours spent in total
+Time spent: 0.77777775 hours spent in total
 
 ## Video Walkthrough 
 

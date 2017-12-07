@@ -7,9 +7,13 @@
 //
 
 import UIKit
+import Parse
 
 class LoginViewController: UIViewController {
-
+    
+    @IBOutlet weak var usernameTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,7 +25,85 @@ class LoginViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    @IBAction func signupButtonTapped(_ sender: Any) {
+        if checkEmpty() {
+            showEmptyAlert()
+            return
+        }
+        registerUser()
+    }
+    
+    @IBAction func loginButtonTapped(_ sender: Any) {
+        if checkEmpty() {
+            showEmptyAlert()
+            return
+        }
+        loginUser()
+    }
+    
+    func registerUser() {
+        
+        // initialize a user object
+        let newUser = PFUser()
+        
+        // set user properties
+        newUser.username = usernameTextField.text
+        newUser.password = passwordTextField.text
+        
+        // call sign up function on the object
+        newUser.signUpInBackground { (success: Bool, error: Error?) in
+            if let error = error {
+                print(error.localizedDescription)
+            } else {
+                print("User Registered successfully")
+                self.performSegue(withIdentifier: "loginSegue", sender: nil)
+            }
+        }   
+    }
+    
+    func loginUser() {
+        
+        let username = usernameTextField.text ?? ""
+        let password = passwordTextField.text ?? ""
+        
+        PFUser.logInWithUsername(inBackground: username, password: password) { (user: PFUser?, error: Error?) in
+            if let error = error {
+                print("User log in failed: \(error.localizedDescription)")
+            } else {
+                print("User logged in successfully")
+                self.performSegue(withIdentifier: "loginSegue", sender: nil)
+            }
+        }   
+    }
+    
+    func checkEmpty() -> Bool {
+        if usernameTextField.text == nil || passwordTextField.text == nil || usernameTextField.text!.trimmingCharacters(in: .whitespaces).characters.count == 0 || passwordTextField.text!.trimmingCharacters(in: .whitespaces).characters.count == 0 {
+            return true
+        }
+        return false
+    }
+    
+    func showEmptyAlert() {
+        
+        let alertController = UIAlertController(title: "Alert", message: "Empty username/password fields", preferredStyle: .alert)
+        // create a cancel action
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
+            // handle cancel response here. Doing nothing will dismiss the view.
+        }
+        // add the cancel action to the alertController
+        alertController.addAction(cancelAction)
+        
+        // create an OK action
+        let OKAction = UIAlertAction(title: "OK", style: .default) { (action) in
+            // handle response here.
+        }
+        // add the OK action to the alert controller
+        alertController.addAction(OKAction)
+        
+        present(alertController, animated: true) {
+            // optional code for what happens after the alert controller has finished presenting
+        }
+    }
     /*
     // MARK: - Navigation
 
