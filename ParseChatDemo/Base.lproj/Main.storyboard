@@ -104,27 +104,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Type a message..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="V9U-kD-PoE">
-                                <rect key="frame" x="8" y="72" width="299" height="30"/>
+                                <rect key="frame" x="8" y="72" width="315" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ro1-jx-ROg">
-                                <rect key="frame" x="0.0" y="110" width="375" height="557"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="i3H-Wt-JoX">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="i3H-Wt-JoX" id="Jdo-uS-GAA">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
-                            </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k82-cG-5Pi">
-                                <rect key="frame" x="315" y="72" width="36" height="30"/>
+                                <rect key="frame" x="331" y="72" width="36" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="36" id="N0z-3v-EDz"/>
                                 </constraints>
@@ -133,15 +119,46 @@
                                     <action selector="sendButtonTapped:" destination="X2c-vb-GZ3" eventType="touchUpInside" id="xcY-wt-urY"/>
                                 </connections>
                             </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ro1-jx-ROg">
+                                <rect key="frame" x="0.0" y="110" width="375" height="557"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ChatCell" id="i3H-Wt-JoX" customClass="ChatCell" customModule="ParseChatDemo" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="i3H-Wt-JoX" id="Jdo-uS-GAA">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My message..." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O1b-sv-Gbd">
+                                                    <rect key="frame" x="8" y="12" width="359" height="23.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="O1b-sv-Gbd" firstAttribute="top" secondItem="Jdo-uS-GAA" secondAttribute="topMargin" constant="4" id="GQP-uZ-X8B"/>
+                                                <constraint firstItem="O1b-sv-Gbd" firstAttribute="trailing" secondItem="Jdo-uS-GAA" secondAttribute="trailingMargin" id="Hx4-MI-HXs"/>
+                                                <constraint firstItem="O1b-sv-Gbd" firstAttribute="leading" secondItem="Jdo-uS-GAA" secondAttribute="leadingMargin" id="JOy-re-ABG"/>
+                                                <constraint firstAttribute="bottom" secondItem="O1b-sv-Gbd" secondAttribute="bottom" constant="8" id="sQu-yc-tn0"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="messageLabel" destination="O1b-sv-Gbd" id="PIy-2A-BA9"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="CYm-qg-TcK" firstAttribute="top" secondItem="ro1-jx-ROg" secondAttribute="bottom" id="3TS-li-BjG"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="k82-cG-5Pi" secondAttribute="trailing" constant="8" id="6Lj-nb-8Rj"/>
                             <constraint firstItem="ro1-jx-ROg" firstAttribute="leading" secondItem="FZp-GC-PvQ" secondAttribute="leading" id="Mgu-0I-WJs"/>
                             <constraint firstItem="V9U-kD-PoE" firstAttribute="leading" secondItem="FZp-GC-PvQ" secondAttribute="leading" constant="8" id="Pat-Pl-fxT"/>
                             <constraint firstItem="V9U-kD-PoE" firstAttribute="top" secondItem="3FI-fA-nTk" secondAttribute="bottom" constant="8" id="PbF-St-E5h"/>
                             <constraint firstItem="k82-cG-5Pi" firstAttribute="centerY" secondItem="V9U-kD-PoE" secondAttribute="centerY" id="Qz5-Br-uXo"/>
+                            <constraint firstAttribute="trailing" secondItem="k82-cG-5Pi" secondAttribute="trailing" constant="8" id="UqB-N0-n5J"/>
                             <constraint firstItem="k82-cG-5Pi" firstAttribute="leading" secondItem="V9U-kD-PoE" secondAttribute="trailing" constant="8" id="WKN-Jx-6MT"/>
                             <constraint firstItem="k82-cG-5Pi" firstAttribute="top" secondItem="3FI-fA-nTk" secondAttribute="bottom" constant="8" id="Xuh-fk-qM8"/>
                             <constraint firstItem="ro1-jx-ROg" firstAttribute="top" secondItem="k82-cG-5Pi" secondAttribute="bottom" constant="8" id="bzf-EC-FDx"/>
