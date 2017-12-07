@@ -94,7 +94,7 @@
         <!--Chat-->
         <scene sceneID="gtl-pk-sdL">
             <objects>
-                <viewController id="X2c-vb-GZ3" customClass="ChatViewController" customModule="ParseChatDemo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ChatViewController" id="X2c-vb-GZ3" customClass="ChatViewController" customModule="ParseChatDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="3FI-fA-nTk"/>
                         <viewControllerLayoutGuide type="bottom" id="CYm-qg-TcK"/>
