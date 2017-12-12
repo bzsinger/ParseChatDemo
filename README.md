@@ -1,18 +1,3 @@
-# ParseChatDemo
-
-ParseChatDemo is a chat client that uses [Parse](http://parseplatform.org/)
-
-Time spent: 2 hours spent in total
-
-## Video Walkthrough 
-
-Here's a walkthrough of implemented user stories:
-
-<img src='https://i.imgur.com/4xpYPl4.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
-
-GIF created with [LiceCap](http://www.cockos.com/licecap/).
-
-
 # Lab 4 - ParseChatDemo
 
 ParseChatDemo is a Chat app using an [open source Parse](http://parseplatform.org/) backend.
