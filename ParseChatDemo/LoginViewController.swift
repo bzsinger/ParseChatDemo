@@ -27,7 +27,7 @@ class LoginViewController: UIViewController {
     
     @IBAction func signupButtonTapped(_ sender: Any) {
         if checkEmpty() {
-            showEmptyAlert()
+            showAlert(error: "Empty username/password fields")
             return
         }
         registerUser()
@@ -35,7 +35,7 @@ class LoginViewController: UIViewController {
     
     @IBAction func loginButtonTapped(_ sender: Any) {
         if checkEmpty() {
-            showEmptyAlert()
+            showAlert(error: "Empty username/password fields")
             return
         }
         loginUser()
@@ -52,8 +52,8 @@ class LoginViewController: UIViewController {
         
         // call sign up function on the object
         newUser.signUpInBackground { (success: Bool, error: Error?) in
-            if let error = error {
-                print(error.localizedDescription)
+            if error != nil {
+                self.showAlert(error: "User signup failed. Use another username.")
             } else {
                 print("User Registered successfully")
                 self.performSegue(withIdentifier: "loginSegue", sender: nil)
@@ -67,8 +67,8 @@ class LoginViewController: UIViewController {
         let password = passwordTextField.text ?? ""
         
         PFUser.logInWithUsername(inBackground: username, password: password) { (user: PFUser?, error: Error?) in
-            if let error = error {
-                print("User log in failed: \(error.localizedDescription)")
+            if error != nil {
+                self.showAlert(error: "User login failed. Check your username/password and try again.")
             } else {
                 print("User logged in successfully")
                 self.performSegue(withIdentifier: "loginSegue", sender: nil)
@@ -83,9 +83,9 @@ class LoginViewController: UIViewController {
         return false
     }
     
-    func showEmptyAlert() {
+    func showAlert(error: String) {
         
-        let alertController = UIAlertController(title: "Alert", message: "Empty username/password fields", preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Error", message: error, preferredStyle: .alert)
         // create a cancel action
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
             // handle cancel response here. Doing nothing will dismiss the view.
